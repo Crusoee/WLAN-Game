@@ -286,6 +286,9 @@ def main(user_input, open_port):
         x = threading.Thread(target=server, daemon=True)
         x.start()
 
+    txt = pygame.font.SysFont("Arial", 30)
+    hostIP_txt = txt.render(f"{HOST}, {PORT}", True, (255,255,255))
+
     run = True
     ran_int = []
     ran_int.append(random.randint(80,255))
@@ -318,6 +321,8 @@ def main(user_input, open_port):
 
                 foreign_player_draw(data)
                 player.draw()
+
+                screen.blit(hostIP_txt, (20,10,300,50))
 
                 pygame.display.update()
     except Exception as e:
